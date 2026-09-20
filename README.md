@@ -1,5 +1,7 @@
 # hebrew-docx
 
+![hebrew-docx](assets/banner.png)
+
 Generate Word (`.docx`) documents in Hebrew — or any right-to-left language —
 from Node.js, with correct bidirectional text, right-to-left tables, and page
 layout that doesn't need fixing by hand afterwards.

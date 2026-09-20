@@ -1,5 +1,5 @@
 # hebrew-docx
-Generate Word (`.docx`) documents in Hebrew — or any right-to-left language —
+Generate Word (`.docx`) documents in Hebrew - or any right-to-left language -
 from Node.js, with correct bidirectional text, right-to-left tables, and page
 layout that doesn't need fixing by hand afterwards.
 
@@ -16,12 +16,12 @@ defaults, Hebrew content built with it breaks in predictable ways:
 - Paragraphs render left-aligned unless every one is marked bidirectional.
 - Tables read left-to-right, so the "first" column ends up on the wrong side.
 - A number or a Latin term sitting inside a Hebrew sentence gets reordered by
-  the bidi algorithm — `"1 : 0..1"` can render as `"0..1 : 1"`, and nobody
+  the bidi algorithm - `"1 : 0..1"` can render as `"0..1 : 1"`, and nobody
   notices until the document is open in Word.
 - Numbered and bulleted lists need their own RTL-aware numbering
   definitions, or the markers end up on the left.
 
-None of this is a docx-js bug — it's just BiDi text layout, which is genuinely
+None of this is a docx-js bug - it's just BiDi text layout, which is genuinely
 fiddly to get right from scratch every time. `hebrew-docx` bakes in the fixes
 once so a generated document reads correctly by default.
 
@@ -71,7 +71,7 @@ simple cases on its own, but ranges, ratios, and code-like strings
 
 - **`ltr(text)`** wraps a string in a directional override
   (`U+202D … U+202C`), locking its internal order. Use it for a whole
-  value that must never be reordered — a version string, a date, a ratio.
+  value that must never be reordered - a version string, a date, a ratio.
 - **`isolate(text)`** scans a mixed Hebrew/Latin sentence and wraps only the
   Latin/numeric segments, leaving the Hebrew words alone. Use it for prose
   that quotes an identifier or a number in passing.
@@ -91,14 +91,14 @@ automatically, so `table()` output usually needs no manual handling.
 | `pageSize` | `'A4'` | `'A4'` or `'Letter'` |
 | `margin` | `2` | Page margin in cm |
 
-- **`.add(...items)`** — appends paragraphs, tables, or arrays of them (so
+- **`.add(...items)`** - appends paragraphs, tables, or arrays of them (so
   `image()`, which returns multiple paragraphs, can be spread directly in).
-- **`.section({ landscape })`** — starts a new section; content added after
+- **`.section({ landscape })`** - starts a new section; content added after
   this call goes on new pages, optionally landscape. Useful for a wide
   table or diagram in an otherwise portrait report.
-- **`.footer(text)`** — sets a centred footer, `"<text> - עמוד N"`.
-- **`.save(path)`** — writes the `.docx` file, returns the path.
-- **`.toBuffer()`** / **`.toDocument()`** — for custom output handling, or
+- **`.footer(text)`** - sets a centred footer, `"<text> - עמוד N"`.
+- **`.save(path)`** - writes the `.docx` file, returns the path.
+- **`.toBuffer()`** / **`.toDocument()`** - for custom output handling, or
   to combine with the raw `docx` API for anything this library doesn't
   cover yet.
 
@@ -110,7 +110,7 @@ automatically, so `table()` output usually needs no manual handling.
 | `heading(text, level, opts)` | Heading, level 1–3 |
 | `bullet(content, opts)` | Bulleted list item (RTL markers) |
 | `numbered(content, opts)` | Numbered list item; pass `ref` to restart a sequence |
-| `table(headers, rows, opts)` | RTL table — `headers[0]` is the rightmost column |
+| `table(headers, rows, opts)` | RTL table - `headers[0]` is the rightmost column |
 | `image(path, opts)` | Centred, scaled image with an optional caption |
 | `run(text, opts)` | A single text run; `opts.ltr` / `opts.isolate` control direction |
 | `ltr(text)` / `isolate(text)` | Direction-locking helpers, usable outside `run()` too |
@@ -124,8 +124,8 @@ automatically, so `table()` output usually needs no manual handling.
 in cm), `headerFill` (hex color), `borderSize`, `borderColor`.
 
 This library re-exports the full `docx` API under `docx` (`const { docx } =
-require('hebrew-docx')`), so anything not covered here — headers, footnotes,
-comments, sections with different page numbering — is still reachable
+require('hebrew-docx')`), so anything not covered here - headers, footnotes,
+comments, sections with different page numbering - is still reachable
 without dropping down to a separate import.
 
 ## Testing
@@ -135,13 +135,13 @@ npm test
 ```
 
 Tests unzip the generated `.docx` and assert on the underlying
-`word/document.xml` — the RTL flags (`w:bidi`, `w:rtl`, `w:bidiVisual`) and
+`word/document.xml` - the RTL flags (`w:bidi`, `w:rtl`, `w:bidiVisual`) and
 the directional overrides land where they should, not just that the
 document opens without throwing.
 
 ## Related
 
-[rtl-diagram](https://github.com/Natifishman/rtl-diagram) — a small Python
+[rtl-diagram](https://github.com/Natifishman/rtl-diagram) - a small Python
 engine for laying out diagrams (flowcharts, DFDs, entity-relationship
 diagrams) with correct Hebrew/RTL text, exporting to SVG and to editable
 draw.io files. Built for the same class of problem: RTL layout that

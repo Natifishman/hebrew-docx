@@ -1,0 +1,19 @@
+{
+  "name": "hebrew-docx",
+  "version": "0.1.0",
+  "description": "Generate Word (.docx) documents in Hebrew and other RTL languages from Node.js - correct bidirectional paragraphs, right-to-left tables, lists and page setup.",
+  "main": "src/index.js",
+  "files": ["src", "README.md", "LICENSE"],
+  "scripts": {
+    "test": "node --test test/rtl.test.js",
+    "example": "node examples/invoice.js && node examples/report.js"
+  },
+  "keywords": ["docx", "word", "hebrew", "rtl", "bidi", "עברית", "arabic", "document-generation", "office"],
+  "author": "Natanel Fishman",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/Natifishman/hebrew-docx.git" },
+  "bugs": { "url": "https://github.com/Natifishman/hebrew-docx/issues" },
+  "homepage": "https://github.com/Natifishman/hebrew-docx#readme",
+  "engines": { "node": ">=18" },
+  "dependencies": { "docx": "^9.0.0" }
+}

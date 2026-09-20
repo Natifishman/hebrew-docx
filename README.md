@@ -1,12 +1,11 @@
 # hebrew-docx
+Generate Word (`.docx`) documents in Hebrew — or any right-to-left language —
+from Node.js, with correct bidirectional text, right-to-left tables, and page
+layout that doesn't need fixing by hand afterwards.
 
 <p align="center">
   <img src="assets/banner.png" alt="hebrew-docx" width="320">
 </p>
-
-Generate Word (`.docx`) documents in Hebrew — or any right-to-left language —
-from Node.js, with correct bidirectional text, right-to-left tables, and page
-layout that doesn't need fixing by hand afterwards.
 
 ## The problem
 
